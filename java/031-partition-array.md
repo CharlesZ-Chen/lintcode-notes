@@ -17,7 +17,7 @@ Corner cases:
 - nums array is null or empty: return 0 (but be aware of 0 may means normal exist of a func. Thus in real world, if null or empty is not allowed in this func, we might consider return other error code or throw exception)
 
 Solution:
-```
+```java
 // keyword: two pointers, integer array
 // time-complexity: O(n)
 // space-complexity: O(1)
