@@ -9,7 +9,7 @@ This is a typical application of two pointers (colliding scan). At first glance,
 
 The idea of solution in [Jiuzhang](http://www.jiuzhang.com/solutions/partition-array/) is similiar but it uses nested loops and thus I think mine might have better readability.
 
-I use left pointer as "scanner" and right pointer as "swapper". When scanner scanned an element should belong to right part, then swap this element to the position of swapper and update the next avaliable position of swapping. Otherwise scanner continue scan next element from left to right.
+I use the left pointer as "scanner" and the right pointer as "swapper". When scanner scanned an element should belong to right part, then swap this element to the position of swapper and update the next avaliable position of swapping. Otherwise scanner continue scan next element from left to right.
 
 Stop criteria: left pointer meet right pointer.
 
