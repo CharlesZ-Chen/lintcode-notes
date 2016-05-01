@@ -58,6 +58,7 @@ public class Solution {
 }
 ```
 
+Additional note: how to partition if not an array but a link list? This is a question in CC189 [Q2.4 Partition](https://github.com/CharlesZ-Chen/CC189/tree/master/src/Q2_04_Partition)
 ---
 
 - [prev: 030. Insert Interval](030-insert-interval.md)
