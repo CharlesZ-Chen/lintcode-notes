@@ -16,6 +16,9 @@ The solution in [Jiuzhang](http://www.jiuzhang.com/solutions/sqrtx/) using `long
 - TODO: why Jiuzhang using `long` rather than using dividing? Is that because production has higher efficence than division in computer?
 
 ```java
+// keyword: binary search
+// time complexity: O(log x)
+// space complexity: O(1)
 class Solution {
     /**
      * @param x: An integer
