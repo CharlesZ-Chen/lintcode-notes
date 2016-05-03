@@ -5,7 +5,15 @@
 
 ---
 
-This is a typical application of [binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm).
+This is a typical application of [binary search algorithm](https://en.wikipedia.org/wiki/Binary_search_algorithm). The basic idea is at each iteration, we check whether the medium element is the sqrt by comparing `r = x / m` and `m`, if `r < m`, that means we should smaller the check point by searching `left, m - 1`; else if `r = m`, then we already find the sqrt; else if `r > m`, then `r` might be the sqrt but we have to further check whether in `m + 1, right` we can find a larger m that  `r > m`.
+
+Note that we can not use `r = m * m` to check the sqrt if we declaired `m` as an `int`, because `r` might be overflow if `m * m > Integer.MAX_VALUE`.
+
+The other thing should note is when calculating the mid point `m`, we should use `m = l + (r - l) / 2` rather than `m = (l + r) / 2` because latter would get overflow if `l + r > Integer.MAX_VALUE`.
+
+The solution in [Jiuzhang](http://www.jiuzhang.com/solutions/sqrtx/) using `long` to calculate the sqrt thus they could using `m * m` to check. 
+
+- TODO: why Jiuzhang using `long` rather than using dividing? Is that because production has higher efficence than division in computer?
 
 ```java
 class Solution {
