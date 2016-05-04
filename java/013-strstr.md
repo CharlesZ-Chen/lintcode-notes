@@ -4,7 +4,7 @@
 - [next: 014. First Position of Target](014-first-position-of-target.md)
 
 ---
-The esay way of solving this question is quite simple: just using two nested for-loop to bruth-force searching the result. One corner case need to be considered about is **when to stop the searching**: we only need to search the source string from `0` to `source.length - target.length + 1`, because we need to ensure that the matching part of source string in each iteration has at least length of target string length.
+The esay way of solving this question is quite simple: just using two nested for-loop to bruth-force searching the result. One corner case need to be considered about is **when to stop the searching**: we only need to search the source string from `0` to `source.length - target.length + 1`, because we need to ensure that the matching part of source string in each iteration has at least the length of target string.
 
 @corner test case: ["source", "rced"]
 
