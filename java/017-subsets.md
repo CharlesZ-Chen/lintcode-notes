@@ -50,6 +50,45 @@ class Solution {
 }
 ```
 
+#### Iterative method
+
+I didn't think out the iterative way :-(
+
+I found one good solution [here](http://blog.csdn.net/linhuanmars/article/details/24286377)
+
+Really need more practice!
+
+```java
+class Solution {
+    /**
+     * @param S: A set of numbers.
+     * @return: A list of lists. All valid subsets.
+     */
+    public ArrayList<ArrayList<Integer>> subsets(int[] nums) {
+        // write your code here
+        if( nums == null) {
+            return null;
+        }
+        
+        Arrays.sort(nums);
+        
+        ArrayList<ArrayList<Integer>> res = new ArrayList<ArrayList<Integer>> ();
+        
+        res.add(new ArrayList<Integer> ());
+    
+        for(int i = 0; i < nums.length; i++) {
+            int size = res.size();
+            for(int j = 0; j < size; j++) {
+                ArrayList<Integer> list = new ArrayList<Integer>(res.get(j));
+                list.add(nums[i]);
+                res.add(list);
+            }
+        }
+        return res;
+    }
+}
+```
+
 ---
 
 - [prev: 016. Permutations II](016-permutations-ii.md)
