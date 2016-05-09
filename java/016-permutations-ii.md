@@ -10,7 +10,7 @@ Using visited array to mark visited element and also filter out the duplicate el
 
 Seems the kind of `subset` series with duplicate elements could use one general rule to solve:
 
-That is to ** forbid ** construct solution with ** jump over ** the duplicate elements. i.e. with duplicate elements we must get the first one, then get the second one, then so on... we cannot get the second one before getting the first one in our solution.
+That is to **forbid** construct solution with **jump over** the duplicate elements. i.e. with duplicate elements we must get the first one, then get the second one, then so on... we cannot get the second one before getting the first one in our solution.
 
 ```java
 class Solution {
