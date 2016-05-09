@@ -6,7 +6,7 @@
 ---
 ** update **
 
-I learn a good trick from [the solution of permutation ii](http://www.jiuzhang.com/solutions/permutations-ii/), that is using visited array as a mark method of which element has already been visited during the DFS.
+I learn a good trick from [the solution of permutation ii](http://www.jiuzhang.com/solutions/permutations-ii/), that is using `visited array` as a mark method of which element has already been visited during the DFS.
 
 Although it use an extra O(n) array, I think this solution is more self-articulate than the a little tricky solution of [permutations](http://www.jiuzhang.com/solutions/permutations). Thus I updated it above the original solution here:
 
