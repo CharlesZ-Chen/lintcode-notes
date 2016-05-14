@@ -5,7 +5,7 @@
 
 ---
 
-Only need to notice one thing: the definition of `leaf` is a `node` have no `chlidren`. See [Tree Terminologies](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminologies_used_in_Trees)
+Only need to notice one thing: the definition of `leaf` is a `node` has no `chlidren`. See [Tree Terminologies](https://en.wikipedia.org/wiki/Tree_(data_structure)#Terminologies_used_in_Trees)
 
 ```java
 /**
