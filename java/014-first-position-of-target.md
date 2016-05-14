@@ -5,7 +5,7 @@
 
 ---
 
-Simple application of binary search.
+Simple application of binary search.  This could be solved by basic template from Jiuzhang. Moreover, [finding last index](http://www.lintcode.com/en/problem/last-position-of-target/) is very similar to this one and just modify the order of judgement after while-loop and also made a little modification of the while-loop searching condition.
 
 ```java
 // keyword: binary search
@@ -17,39 +17,35 @@ class Solution {
      * @param target: Target to find.
      * @return: The first position of target. Position starts from 0.
      */
-    public int binarySearch(int[] nums, int target) {
-        //write your code here
-        if (nums == null || nums.length < 1) {
+    public int binarySearch(int[] A, int target) {
+        // Write your code here
+        if (A == null || A.length < 1) {
             return -1;
         }
-
+        
         int start = 0;
-        int end = nums.length - 1;
-        int idx = -1;
-
+        int end = A.length - 1;
+        
         while (start + 1 < end) {
-            int m = start + (end - start) / 2;
-
-            if (nums[m] == target) {
-                idx = m;
-                end = m - 1;
+            int mid = start + (end - start) / 2;
+            int val = A[mid];
+            
+            if (val < target) {
+                start = mid + 1;
             }
-            else if (nums[m] < target) {
-                start = m + 1;
-            }
-            else if (nums[m] > target) {
-                end = m - 1;
+            else {
+                end = mid;
             }
         }
-
-        if (nums[start] == target) {
+        
+        if (A[start] == target) {
             return start;
         }
-        else if (nums[end] == target) {
+        else if (A[end] == target) {
             return end;
         }
-
-        return idx;
+        
+        return -1;
     }
 }
 ```
