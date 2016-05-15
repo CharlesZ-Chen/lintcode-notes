@@ -103,6 +103,63 @@ http://www.lintcode.com/en/problem/balanced-binary-tree/#     * @param root: The
     }
 }
 ```
+
+## OO version
+
+Using `ResultType` to store info of isBalanced and maxLength for a tree.
+
+```java
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+http://www.lintcode.com/en/problem/balanced-binary-tree/#     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
+    public class ResultType {
+        public int maxLength;
+        public boolean isBalanced;
+
+        public ResultType(int maxLength, boolean isBalanced) {
+            this.maxLength = maxLength;
+            this.isBalanced = isBalanced;
+        }
+    }
+    public boolean isBalanced(TreeNode root) {
+
+        return getResult(root).isBalanced;
+    }
+    
+    public ResultType getResult(TreeNode root) {
+        if (root == null) {
+            return new ResultType(0, true);
+        }
+
+        if (root.left == null && root.right == null) {
+            return new ResultType(1, true);
+        }
+
+        ResultType leftRT = getResult(root.left);
+        ResultType rightRT = getResult(root.right);
+        
+        if(!leftRT.isBalanced || !rightRT.isBalanced ||
+            Math.abs(leftRT.maxLength - rightRT.maxLength) > 1) {
+                return new ResultType(-1, false);
+            }
+  
+        return new ResultType(Math.max(leftRT.maxLength, rightRT.maxLength) + 1, true);
+    }
+}
+```
 ---
 
 - [prev: 092. Backpack](092-backpack.md)
