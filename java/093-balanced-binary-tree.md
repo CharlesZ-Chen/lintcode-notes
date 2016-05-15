@@ -4,9 +4,53 @@
 - [next: 094. Binary Tree Maximum Path Sum](094-binary-tree-maximum-path-sum.md)
 
 ---
+## naive version
 
-put your own notes and solutions here.
-you can add any reference link such as [title](reference url) here.
+using condition: if a BT is balanced, then: BT.left.isBalanced && BT.right.isBalanced && abs(BT.left.maxLength - BT.right.maxLength) <= 1
+
+```java
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+http://www.lintcode.com/en/problem/balanced-binary-tree/#     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+
+        if (root.left == null && root.right == null) {
+            return true;
+        }
+
+        return isBalanced(root.left) && isBalanced(root.right) &&
+            Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1;
+    }
+
+    public int maxDepth(TreeNode root) {
+        if ( root == null) {
+            return 0;
+        }
+
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+
+        return Math.max(maxDepth(root.left), maxDepth(root.right)) + 1;
+    }
+}
+```
 
 ---
 
