@@ -51,7 +51,58 @@ http://www.lintcode.com/en/problem/balanced-binary-tree/#     * @param root: The
     }
 }
 ```
+## Using -1 propogate length and isBalanced information
 
+```java
+/**
+ * Definition of TreeNode:
+ * public class TreeNode {
+ *     public int val;
+ *     public TreeNode left, right;
+ *     public TreeNode(int val) {
+ *         this.val = val;
+ *         this.left = this.right = null;
+ *     }
+ * }
+ */
+public class Solution {
+    /**
+http://www.lintcode.com/en/problem/balanced-binary-tree/#     * @param root: The root of binary tree.
+     * @return: True if this Binary tree is Balanced, or false.
+     */
+    public boolean isBalanced(TreeNode root) {
+        if (root == null) {
+            return true;
+        }
+        
+        if (root.left == null && root.right == null) {
+            return true;
+        }
+        
+        return maxDepth(root) != -1;
+    }
+    
+    public int maxDepth(TreeNode root) {
+        if ( root == null) {
+            return 0;
+        }
+        
+        if (root.left == null && root.right == null) {
+            return 1;
+        }
+        
+        int leftMaxDepth = maxDepth(root.left);
+        int rightMaxDepth = maxDepth(root.right);
+        
+        if (leftMaxDepth == -1 || rightMaxDepth == -1 ||
+            Math.abs(leftMaxDepth - rightMaxDepth) > 1) {
+           return -1;  
+        }
+        
+        return Math.max(leftMaxDepth, rightMaxDepth) + 1;
+    }
+}
+```
 ---
 
 - [prev: 092. Backpack](092-backpack.md)
