@@ -9,63 +9,30 @@
 ```java
 public class Solution {
     /**
-     * @param obstacleGrid: A list of lists of integers
-     * @return: An integer
+     * @param A: A list of integers
+     * @return: The boolean answer
      */
-    public int uniquePathsWithObstacles(int[][] A) {
+    public boolean canJump(int[] A) {
         if (A == null || A.length < 1) {
-            return -1;
+            return false;
         }
 
-        int m = A.length;
-        int n = A[0].length;
+        boolean[] f = new boolean [A.length];
 
-        int[][] f = new int [2][n];
+        f[0] = true;
 
-        boolean isBlockVer = false;
-        boolean isBlockHor = false;
-
-        if (A[0][0] == 1) {
-            return 0;
-        }
-
-        for (int j  = 0; j < n; j++) {
-            if (isBlockHor) {
-                f[0][j] = 0;
-            } else if (A[0][j] == 1) {
-                isBlockHor = true;
-                f[0][j] = 0;
-            } else {
-                f[0][j] = 1;
-            }
-        }
-        if (m > 1) {
-            if (A[1][0] == 1) {
-                isBlockVer = true;
-                f[1][0] = 0;
-            } else {
-                f[1][0] = 1;
+        for (int i = 1; i < A.length; i++) {
+            for (int j = 0; j < i; j++) {
+                if (f[j] && A[j] >= i - j) {
+                    f[i] = true;
+                    break;
+                }
             }
         }
 
-        for (int i = 1; i < m; i++) {
-            if (isBlockVer) {
-                f[i % 2][0] = 0;
-            } else if (A[i][0] == 1) {
-                isBlockVer = true;
-                f[i % 2][0] = 0;
-            } else {
-                f[i % 2][0] = 1;
-            }
-            for (int j = 1; j < n; j++) {
-                f[i % 2][j] = A[i][j] == 1 ? 0 : f[i % 2][j - 1] + f[(i - 1) % 2][j];
-            }
-        }
-
-        return f[(m - 1) % 2][n - 1];
+        return f[A.length - 1];
     }
 }
-
 ```
 
 ---
