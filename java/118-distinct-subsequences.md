@@ -62,13 +62,6 @@ public class Solution {
 
         return f[lengT][lengS];
     }
-    
-    /*
-          d d d 
-        d 1 2 3
-        d 0 1 3
-          0 0 0 0
-    */
 }
 ```
 
