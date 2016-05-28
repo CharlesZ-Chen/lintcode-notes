@@ -23,7 +23,6 @@ public class Solution {
 
         int lenS1 = s1.length();
         int lenS2 = s2.length();
-        int lenS3 = s3.length();
 
         // state: f[i][j] is 0 ~ i-1 in s1 and 0 ~ j - 1in s2 could form 0 ~ i-1+j-1 in s3
         boolean[][] f = new boolean [lenS1 + 1][lenS2 + 1];
