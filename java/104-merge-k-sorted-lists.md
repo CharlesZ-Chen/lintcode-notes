@@ -67,6 +67,73 @@ public class Solution {
 
 ```
 
+## Divide and Conquer Top-down
+
+```java
+/**
+ * Definition for ListNode.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int val) {
+ *         this.val = val;
+ *         this.next = null;
+ *     }
+ * }
+ */ 
+public class Solution {
+    /**
+     * @param lists: a list of ListNode
+     * @return: The head of one sorted list.
+     */
+    public ListNode mergeKLists(List<ListNode> lists) {  
+        if (lists == null || lists.size() < 1) {
+            return null;
+        }
+
+        switch(lists.size()) {
+            case 1: return lists.get(0);
+            case 2: return mergeAsOneSortedList(lists.get(0), lists.get(1));
+        }
+
+        int mid = lists.size()/2;
+        ListNode left = mergeKLists(lists.subList(0, mid));
+        ListNode right = mergeKLists(lists.subList(mid, lists.size()));
+
+        return mergeAsOneSortedList(left, right);
+    }
+
+    public ListNode mergeAsOneSortedList(ListNode fst, ListNode snd) {
+        if (fst == null) {
+            return snd;
+        }
+
+        if (snd == null) {
+            return fst;
+        }
+
+        ListNode dummy = new ListNode(0);
+        ListNode curt = dummy;
+
+        while(fst != null && snd != null) {
+            if (fst.val < snd.val) {
+                curt.next = fst;
+                fst = fst.next;
+            } else {
+                curt.next = snd;
+                snd = snd.next;
+            }
+            curt = curt.next;
+        }
+
+        curt.next = fst == null ? snd : fst;
+
+        return dummy.next;
+    }
+}
+
+```
+
 ---
 
 - [prev: 103. Linked List Cycle II](103-linked-list-cycle-ii.md)
