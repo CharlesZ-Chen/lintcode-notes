@@ -48,11 +48,8 @@ public class Solution {
         curt = head;
         next = right;
         // Promised by step 2 that we only need to handle below two situations
-        // left:  X->X->null
-        // right: X->X->null
-        // OR
-        // left:  X->X->null
-        // right: X->null
+        // 1. left and right list have same length
+        // 2. left has one more element than right
         while (curt != null) {
             ListNode temp = curt.next;
             curt.next = next;
