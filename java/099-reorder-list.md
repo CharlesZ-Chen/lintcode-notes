@@ -5,7 +5,7 @@
 
 ---
 
-Just a Comble of findMiddle, reverseList, and mergeList;
+Just a combo of findMiddle, reverseList, and mergeList;
 
 **Note** the merge implementation in below algorithm is specific towards this problem, i.e. it just handle two cases:
 
