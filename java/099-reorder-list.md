@@ -7,6 +7,11 @@
 
 Just a Comble of findMiddle, reverseList, and mergeList;
 
+**Note** the merge implementation in below algorithm is specific towards this problem, i.e. it just handle two cases:
+
+- left and right list have same length.
+- left has one more element than right.
+
 ```java
 /**
  * Definition for ListNode.
