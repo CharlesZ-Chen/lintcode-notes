@@ -5,8 +5,82 @@
 
 ---
 
-put your own notes and solutions here.
-you can add any reference link such as [title](reference url) here.
+Just a Comble of findMiddle, reverseList, and mergeList;
+
+```java
+/**
+ * Definition for ListNode.
+ * public class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int val) {
+ *         this.val = val;
+ *         this.next = null;
+ *     }
+ * }
+ */ 
+public class Solution {
+    /**
+     * @param head: The head of linked list.
+     * @return: void
+     */
+    public void reorderList(ListNode head) {  
+        if (head == null) {
+            return;
+        }
+        ListNode mid, right, curt, next;
+
+        // 1. find middle, get two list
+        mid = getMiddle(head);
+
+        // 2. reverse right part, cut to two lists
+        // If list length is odd, then left.length = right.length + 1
+        
+        right = reverse(mid.next);
+        mid.next = null;
+
+        // 3. merge
+        curt = head;
+        next = right;
+        // Promised by step 2 that we only need to handle below two situations
+        // left:  X->X->null
+        // right: X->X->null
+        // OR
+        // left:  X->X->null
+        // right: X->null
+        while (curt != null) {
+            ListNode temp = curt.next;
+            curt.next = next;
+            curt = next;
+            next = temp;
+        }
+    }
+
+    ListNode getMiddle(ListNode head) {
+        ListNode slow = head;
+        ListNode fast = head.next;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+        }
+        return slow;
+    }
+
+    ListNode reverse(ListNode head) {
+        ListNode prev = null;
+
+        while (head != null) {
+            ListNode temp = head.next;
+            head.next = prev;
+            prev = head;
+            head = temp;
+        }
+        return prev;
+    }
+}
+
+```
 
 ---
 
