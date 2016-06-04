@@ -76,6 +76,81 @@ public class Solution {
 }
 ```
 
+## quick sort version
+
+Be award of **infinite recursion**! We have to have a **middle list** to refer the value equals to middle, and thus ensure that qsort(left) and qsort(right) would have a different mid value to partition the sub-list!
+
+```java
+    public ListNode sortList(ListNode head) {  
+        if (head == null) {
+            return null;
+        }
+
+        return qsort(head);
+    }
+
+    public ListNode qsort(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+        if (head.next == null) {
+            return head;
+        }
+
+        int mid = head.val;
+
+        ListNode leftDummy = new ListNode(0);
+        ListNode rightDummy = new ListNode(0);
+        ListNode midDummy = new ListNode(0);
+        ListNode left = leftDummy;
+        ListNode right = rightDummy;
+        ListNode middle = midDummy;
+
+        while (head != null) {
+            if (head.val < mid) {
+                left.next = head;
+                left = left.next;
+            } else if (head.val > mid) {
+                right.next = head;
+                right = right.next;
+            } else {
+                middle.next = head;
+                middle = middle.next;
+            }
+            head = head.next;
+        }
+
+        left.next = null;
+        right.next = null;
+        middle.next = null;
+
+        left = qsort(leftDummy.next);
+        right = qsort(rightDummy.next);
+
+        return concat(left, midDummy.next, right);
+    }
+
+    public ListNode concat(ListNode left, ListNode middle, ListNode right) {
+        ListNode dummy = new ListNode(0);
+        ListNode tail = dummy;
+        tail.next = left; tail = getTail(tail);
+        tail.next = middle; tail = getTail(tail);
+        tail.next = right;
+
+        return dummy.next;
+    }
+    public ListNode getTail(ListNode head) {
+        if (head == null) {
+            return null;
+        }
+
+        while (head.next != null) {
+            head = head.next;
+        }
+        return head;
+    }
+```
+
 ---
 
 - [prev: 097. Maximum Depth of Binary Tree](097-maximum-depth-of-binary-tree.md)
