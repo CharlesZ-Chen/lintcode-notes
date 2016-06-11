@@ -4,9 +4,43 @@
 - [next: 149. Best Time to Buy and Sell Stock](149-best-time-to-buy-and-sell-stock.md)
 
 ---
+## Three Pointers
+```java
+class Solution {
+    /**
+     * @param nums: A list of integer which is 0, 1 or 2 
+     * @return: nothing
+     */
+    public void sortColors(int[] nums) {
+        if (nums == null || nums.length < 1) {
+            return;
+        }
 
-put your own notes and solutions here.
-you can add any reference link such as [title](reference url) here.
+        int red = -1;
+        int white = 0;
+        int blue = nums.length;
+
+        while (white < blue) {
+            if (white == red) {
+                white++;
+                continue;
+            }
+
+            int color = nums[white];
+
+            if (color == 0) {
+                nums[white] = nums[++red];
+                nums[red] = 0;
+            } else if (color == 1) {
+                white++;
+            } else if (color == 2) {
+                nums[white] = nums[--blue];
+                nums[blue] = 2;
+            }
+        }
+    }
+}
+```
 
 ---
 
