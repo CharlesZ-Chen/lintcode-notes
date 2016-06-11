@@ -5,8 +5,30 @@
 
 ---
 
-put your own notes and solutions here.
-you can add any reference link such as [title](reference url) here.
+## Hash Table Version
+
+```java
+ public int[] twoSum(int[] numbers, int target) {
+        // write your code here
+        if(numbers == null || numbers.length < 2) {
+            return null;
+        }
+        
+        Hashtable<Integer, Integer> diffTab = 
+            new Hashtable<Integer, Integer>(numbers.length);
+            
+        for(int i = 0; i < numbers.length; i++) {
+            if(diffTab.get(numbers[i]) != null) {
+                int[] result = new int [] {diffTab.get(numbers[i]), i + 1};
+                return result;
+            }
+            diffTab.put(target - numbers[i], i + 1);
+        }
+        
+        int[] result = new int[0];
+        return result;
+    }
+```
 
 ---
 
