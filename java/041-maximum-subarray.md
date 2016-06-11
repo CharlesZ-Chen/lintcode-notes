@@ -15,13 +15,6 @@ public class Solution {
         if (nums == null || nums.length < 1) {
             return Integer.MIN_VALUE;
         }
-        // first get the prefix sum Array
-        int[] preSumArr = new int [nums.length + 1];
-        int sum = 0;
-        for (int i = 0; i < nums.length; i++) {
-            sum += nums[i];
-            preSumArr[i + 1] = sum;
-        }
 
         // is this DP?
         //state: f[i], maximum subArray which ends with nums[i]
