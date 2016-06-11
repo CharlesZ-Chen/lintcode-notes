@@ -6,11 +6,6 @@
 ---
 
 ```java
-public class Solution {
-    /**
-     * @param nums: A list of integers
-     * @return: A integer indicate the sum of max subarray
-     */
     public int maxSubArray(int[] nums) {
         if (nums == null || nums.length < 1) {
             return Integer.MIN_VALUE;
@@ -21,7 +16,6 @@ public class Solution {
         //transfer function: f[i] = Math.max(nums[i], nums[i] + f[i - 1])
         //answer: max(f[i])
         int[] f = new int[nums.length];
-
         f[0] = nums[0];
         int max = f[0];
 
@@ -32,7 +26,6 @@ public class Solution {
 
         return max;
     }
-}
 ```
 
 ---
