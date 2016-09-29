@@ -5,8 +5,35 @@
 
 ---
 
-put your own notes and solutions here.
-you can add any reference link such as [title](reference url) here.
+Simple array operation.
+
+```java
+class Solution {
+    /**
+     * @param A: sorted integer array A which has m elements, 
+     *           but size of A is m+n
+     * @param B: sorted integer array B which has n elements
+     * @return: void
+     */
+    public void mergeSortedArray(int[] A, int m, int[] B, int n) {
+        if (A == null || B == null || A.length < B.length || A.length == 0) {
+            return;
+        }
+
+        int k = m + n - 1;
+        int i = m - 1;
+        int j = n - 1;
+
+        while (j > -1) {
+           if (i > -1 && A[i] > B[j]) {
+               A[k--] = A[i--];
+           } else {
+               A[k--] = B[j--];
+           }
+        }
+    }
+}
+```
 
 ---
 
